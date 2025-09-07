@@ -1,0 +1,153 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "configure-ninja-debug",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-G",
+                "Ninja",
+                "-DCMAKE_BUILD_TYPE=Debug",
+                "-DCMAKE_LINKER=mold",
+                "-DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=mold",
+                "-DCMAKE_SHARED_LINKER_FLAGS=-fuse-ld=mold",
+                "-B",
+                "${workspaceFolder}/build",
+                "${workspaceFolder}"
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "Configure project with Ninja generator and mold linker for Debug",
+            "options": {
+                "env": {
+                    "CXX": "g++",
+                    "CC": "gcc"
+                }
+            }
+        },
+        {
+            "label": "configure-ninja-release",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-G",
+                "Ninja",
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DCMAKE_LINKER=mold",
+                "-DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=mold",
+                "-DCMAKE_SHARED_LINKER_FLAGS=-fuse-ld=mold",
+                "-B",
+                "${workspaceFolder}/build",
+                "${workspaceFolder}"
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "Configure project with Ninja generator and mold linker for Release",
+            "options": {
+                "env": {
+                    "CXX": "g++",
+                    "CC": "gcc"
+                }
+            }
+        },
+        {
+            "label": "configure-ninja-relwithdebinfo",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-G",
+                "Ninja",
+                "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+                "-DCMAKE_LINKER=mold",
+                "-DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=mold",
+                "-DCMAKE_SHARED_LINKER_FLAGS=-fuse-ld=mold",
+                "-B",
+                "${workspaceFolder}/build",
+                "${workspaceFolder}"
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "Configure project with Ninja generator and mold linker for RelWithDebInfo",
+            "options": {
+                "env": {
+                    "CXX": "g++",
+                    "CC": "gcc"
+                }
+            }
+        },
+        {
+            "label": "build-all",
+            "type": "shell",
+            "command": "ninja",
+            "args": [
+                "-C",
+                "${workspaceFolder}/build"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Builds all targets using Ninja with mold linker",
+        },
+        {
+            "label": "build-all-release",
+            "type": "shell",
+            "command": "ninja",
+            "args": [
+                "-C",
+                "${workspaceFolder}/build"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Builds all targets in Release using Ninja with mold linker",
+        },
+        {
+            "label": "build-all-release-debug",
+            "type": "shell",
+            "command": "ninja",
+            "args": [
+                "-C",
+                "${workspaceFolder}/build"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Builds all targets in RelWithDebInfo using Ninja with mold linker",
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "ninja",
+            "args": [
+                "-C",
+                "${workspaceFolder}/build",
+                "clean"
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "Clean build artifacts using Ninja"
+        },
+        {
+            "label": "build-verbose",
+            "type": "shell",
+            "command": "ninja",
+            "args": [
+                "-C",
+                "${workspaceFolder}/build",
+                "-v"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Builds with verbose output using Ninja"
+        }
+    ]
+}
