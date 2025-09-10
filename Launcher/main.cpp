@@ -1,7 +1,7 @@
 #include <iostream>
+#include <Core/TorrentSession.hpp>
 
 int main()
 {
-    std::cout << "Hello world";
     return 0;
 }

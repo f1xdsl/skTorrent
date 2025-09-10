@@ -67,13 +67,16 @@
     "C_Cpp.default.compilerPath": "/usr/bin/g++",
     "C_Cpp.errorSquiggles": "disabled",
     "C_Cpp.clang_format_style": "file",
-    "workbench.iconTheme": "fira-code-material-minimal",
     "editor.fontFamily": "fira-code-nerd, FiraCode Nerd Font, Consolas, 'Courier New', monospace",
     "editor.fontLigatures": true,
     "workbench.editorAssociations": {
         "*.md": "vscode.markdown.preview.editor",
         "*.svg": "default"
     },
+    "testExplorer.useNativeTesting": false,
+    "testMate.cpp.test.executables": "${workspaceFolder}/build/Test/*Test",
+    "testMate.cpp.log.logfile": "${workspaceFolder}/.vscode/testmate.log",
+    "testMate.cpp.log.logSucceedingTests": true,
     "[markdown]": {
         "files.trimTrailingWhitespace": false,
         "editor.formatOnSave": false,
@@ -230,5 +233,33 @@
         "generator": "cpp",
         "qpluginloader": "cpp",
         "*.inc": "cpp"
-    }
+    },
+    "workbench.settings.editor": "json",
+    "cmake.configureSettings": {},
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "googletest.failed",
+                "settings": {
+                    "foreground": "#f00"
+                }
+            },
+            {
+                "scope": "googletest.passed",
+                "settings": {
+                    "foreground": "#0f0"
+                }
+            },
+            {
+                "scope": "googletest.run",
+                "settings": {
+                    "foreground": "#0f0"
+                }
+            }
+        ]
+    },
+    "gtest-adapter.debugConfig": [
+        "Run Tests (testAll)"
+    ],
+    "gtest-adapter.supportLocation": false
 }

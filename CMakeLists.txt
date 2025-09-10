@@ -1,13 +1,15 @@
-cmake_minimum_required(VERSION 3.20)
-project(Skeborrent)  # <-- тут имя проекта
+cmake_minimum_required(VERSION 3.16)
+project(skTorrent LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PROJECT_NAME}_${CMAKE_BUILD_TYPE})
-
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PROJECT_NAME}_${CMAKE_BUILD_TYPE})
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PROJECT_NAME}_${CMAKE_BUILD_TYPE})
-
-# Тут твои исходники
-add_executable(${PROJECT_NAME} main.cpp)
+# Основная библиотека (код торрента)
+add_subdirectory(skTorrent)
+add_subdirectory(Launcher)
+# Тесты (подключаются только если включено)
+option(BUILD_TESTS "Build tests" ON)
+if(BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(Test)
+endif()
