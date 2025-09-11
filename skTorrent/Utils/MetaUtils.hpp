@@ -27,6 +27,7 @@ struct Metadata
 
 namespace Utils {
 
+std::string urlEncode(const std::string& str);
 Metadata fillMetadata(const std::string& torrentFilePath);
 std::string extractRawInfoSection(const std::string& data);
 std::string computeInfoHash(const std::string& rawInfoSection);

@@ -3,12 +3,14 @@
 
 #include <Utils/MetaUtils.hpp>
 
-namespace Torrent::Core {
+namespace Torrent {
 
 class TorrentSession
 {
 public:
-    TorrentSession() = default;
+    explicit TorrentSession(const std::string& filePath);
+    std::string getAnnounceRequest();
+
     void start();
     void stop();
     void status();
@@ -17,5 +19,5 @@ private:
     Metadata m_meta;
     std::string m_filePath;
 };
-}  // namespace Torrent::Core
+}  // namespace Torrent
 #endif  // TORRENTSESSION_HPP

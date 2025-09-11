@@ -5,7 +5,30 @@
 #include <openssl/crypto.h>
 #include <fstream>
 
+#include <iostream>
+
 namespace Torrent::Utils {
+
+std::string urlEncode(const std::string& str)
+{
+    static const char hex[] = "0123456789ABCDEF";
+    std::string out;
+    for (unsigned char c : str)
+    {
+        if (std::isalnum(c) || c == '-' || c == '_' || c == '.' || c == '~')
+        {
+            out.push_back(c);
+        }
+        else
+        {
+            out.push_back('%');
+            out.push_back(hex[c >> 4]);
+            out.push_back(hex[c & 15]);
+        }
+    }
+    return out;
+}
+
 size_t skipElement(const std::string& data, size_t pos)
 {
     size_t retpos = pos;
@@ -96,6 +119,7 @@ Metadata fillMetadata(const std::string& torrentFilePath)
     std::ifstream ifs(torrentFilePath, std::ios::binary);
     if (!ifs)
     {
+        std::cout << torrentFilePath << std::endl;
         throw std::runtime_error("Failed to open torrent file");
     }
     std::string data((std::istreambuf_iterator<char>(ifs)), (std::istreambuf_iterator<char>()));
