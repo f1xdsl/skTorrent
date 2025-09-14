@@ -155,6 +155,14 @@ Metadata fillMetadata(const std::string& torrentFilePath)
     {
         meta.name = info["name"].asStr();
     }
+    if (info.contains("announce-list"))
+    {
+        auto announceList = info["announce-list"].asList();
+        for (auto announce : announceList)
+        {
+            meta.announceList.push_back(announce.asStr());
+        }
+    }
 
     if (info.contains("piece length"))
     {

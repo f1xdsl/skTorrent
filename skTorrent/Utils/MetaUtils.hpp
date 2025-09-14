@@ -15,12 +15,14 @@ struct Metadata
     };
 
     std::string announce;
+
     std::string name;
 
     uint64_t pieceLength = 0;
     uint64_t totalSize   = 0;
 
     std::vector<std::string> pieceHashes;
+    std::vector<std::string> announceList;
     std::vector<FileEntry> files;
     std::string infoHash;
 };
